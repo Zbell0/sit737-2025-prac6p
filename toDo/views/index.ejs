@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do List</h1>
+      <form action="/todos/add" method="POST" id="todoForm">
+        <input
+          type="text"
+          id="todoInput"
+          name="title"
+          placeholder="Enter a new task"
+          required
+        />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todoList">
+        <% toDos.forEach(toDo => { %>
+        <li class="todo-item">
+          <span><%= toDo.title %></span>
+          <form
+            action="/todos/delete/<%= toDo._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline"
+          >
+            <button class="delete-btn">×</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </body>
+</html>
