@@ -1,0 +1,7 @@
+{"level":"info","message":"::1 - /add requested: 10 + 20 = 30","service":"calculator-microservice"}
+{"level":"error","message":"::1 - /add - Provide valid numbers","service":"calculator-microservice"}
+{"level":"info","message":"::1 - /add requested: 10 + 40 = 50","service":"calculator-microservice"}
+{"level":"info","message":"New division requested: 10+30=0.3333333333333333","service":"calculator-microservice"}
+{"level":"info","message":"New division requested: 10+30=0.3333333333333333","service":"calculator-microservice"}
+{"level":"info","message":"New mulitfly requested: 20*30=600","service":"calculator-microservice"}
+{"level":"info","message":"New mulitfly requested: 20*30=600","service":"calculator-microservice"}
