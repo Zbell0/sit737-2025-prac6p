@@ -1,5 +1,4 @@
-const logger = require("winston");
-
+const logger = require("../logger");
 exports.add = (req, res) => {
   const { num1, num2 } = req.query;
   const result = parseFloat(num1) + parseFloat(num2);

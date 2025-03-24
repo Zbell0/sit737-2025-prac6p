@@ -1,4 +1,4 @@
-const logger = require("winston");
+const logger = require("../logger");
 
 exports.power = (req, res) => {
   const { num1, num2 } = req.query;
