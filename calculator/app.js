@@ -37,11 +37,13 @@ app.get("/add", (req, res) => {
   res.send({ result });
 });
 
-app.get(`/subtract`, (req, res) => {
+app.get("/subtract", (req, res) => {
   const { num1, num2 } = req.query;
   const operation = "subtraction";
   const result = parseFloat(num1) - parseFloat(num2);
+
   if (isNaN(result)) {
+    const errorMsg = "Provide valid numbers";
     logger.error(`${req.ip} - /subtract - ${errorMsg}`);
     return res.status(400).send({ error: errorMsg });
   }
@@ -52,12 +54,17 @@ app.get(`/subtract`, (req, res) => {
   res.send({ result });
 });
 
-app.get(`/multiply`, (req, res) => {
+app.get("/multiply", (req, res) => {
   const { num1, num2 } = req.query;
-  const result = parseFloat(num1) * parseFloat(num2);
-  const operation = "mulitfly";
-  if (isNaN(result)) {
-    return res.status(400).send({ error: "Provide valid numbers" });
+  const parsedNum1 = parseFloat(num1);
+  const parsedNum2 = parseFloat(num2);
+  const result = parsedNum1 * parsedNum2;
+  const operation = "multiplication";
+
+  if (isNaN(parsedNum1) || isNaN(parsedNum2)) {
+    const errorMsg = "Provide valid numbers";
+    logger.error(`${req.ip} - /multiply - ${errorMsg}`);
+    return res.status(400).send({ error: errorMsg });
   }
   logger.log({
     level: "info",
@@ -66,19 +73,28 @@ app.get(`/multiply`, (req, res) => {
   res.send({ result });
 });
 
-app.get(`/divide`, (req, res) => {
+app.get("/divide", (req, res) => {
   const { num1, num2 } = req.query;
-  const result = parseFloat(num1) / parseFloat(num2);
+  const parsedNum1 = parseFloat(num1);
+  const parsedNum2 = parseFloat(num2);
+
+  if (isNaN(parsedNum1) || isNaN(parsedNum2)) {
+    const errorMsg = "Provide valid numbers";
+    logger.error(`${req.ip} - /divide - ${errorMsg}`);
+    return res.status(400).send({ error: errorMsg });
+  }
+
+  if (parsedNum2 === 0) {
+    const errorMsg = "Cannot divide by zero";
+    logger.error(`${req.ip} - /divide - ${errorMsg}`);
+    return res.status(400).send({ error: errorMsg });
+  }
+
+  const result = parsedNum1 / parsedNum2;
   const operation = "division";
-  if (isNaN(result)) {
-    return res.status(400).send({ error: "Provide valid numbers" });
-  }
-  if (parseFloat(num2) === 0) {
-    return res.status(400).send({ error: "Cannot devide by zero" });
-  }
   logger.log({
     level: "info",
-    message: `New ${operation} requested: ${num1}+${num2}=${result}`,
+    message: `New ${operation} requested: ${num1}/${num2}=${result}`,
   });
   res.send({ result });
 });
