@@ -22,6 +22,7 @@ app.use("/todos", require("./routes/toDoRoutes"));
 app.get("/", (req, res) => {
   res.send("hello, node!");
 });
+app.get("/healthz", (req, res) => res.send("OK"));
 
 app.listen(3000, () => {
   console.log("Server is on");
