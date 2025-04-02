@@ -20,7 +20,7 @@ This is a simple Node.js + Express application that allows basic to-do functiona
 
 ---
 
- ## 📋 Prerequisites  ##
+ ##  Prerequisites  ##
 
 Before running or deploying this app, make sure the following are installed and configured:
 
@@ -31,7 +31,7 @@ Before running or deploying this app, make sure the following are installed and 
 
 ---
 
- ## 🛠️ Setup & Local Docker Usage ##
+ ##  Setup & Local Docker Usage ##
 
 ### 1. Clone the Repository
 
